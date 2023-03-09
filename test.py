@@ -12,13 +12,12 @@ import pandas as pd
 servico = FirefoxService(executable_path=GeckoDriverManager().install())
 navegador = webdriver.Firefox(service=servico)
 
-wait = WebDriverWait(navegador, 20)
+wait = WebDriverWait(navegador, 50)
 #element_to_be_clickable
 #presence_of_element_located
 #visibility_of_element_located
 #fastrack = wait.until(ec.visibility_of_element_located((By.XPATH, "//a[@data-tracking-id='0_Fastrack']")))
 #fastrack.click()
-
 
 #abre o sistema
 navegador.get("https://app.mercos.com/")
