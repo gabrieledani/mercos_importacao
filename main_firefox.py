@@ -231,7 +231,8 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         time.sleep(3)
 
         print('data emissao')
-        data_emis = wait.until(ec.presence_of_element_located((By.XPATH,'/html/body/div[7]/div/div[2]/form/div[1]/div[1]/div[1]/div[2]/div/div[2]/input')))
+        #data_emis = wait.until(ec.presence_of_element_located((By.XPATH,'/html/body/div[7]/div/div[2]/form/div[1]/div[1]/div[1]/div[2]/div/div[2]/input')))
+        data_emis = wait.until(ec.element_to_be_clickable((By.XPATH,'/html/body/div[5]/div/div[2]/form/div[1]/div[1]/div[1]/div[2]/div/div[2]/input')))
         data_emis.click()
         data_emis.send_keys(pedido.data.strftime("%d/%m/%Y"))
         time.sleep(3)
@@ -353,7 +354,8 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         time.sleep(3)
 
         print('data emissao')
-        data_emis = wait.until(ec.presence_of_element_located((By.XPATH,'/html/body/div[7]/div/div[2]/form/div[1]/div[1]/div[1]/div[2]/div/div[2]/input')))
+        #data_emis = wait.until(ec.presence_of_element_located((By.XPATH,'/html/body/div[7]/div/div[2]/form/div[1]/div[1]/div[1]/div[2]/div/div[2]/input')))
+        data_emis = wait.until(ec.element_to_be_clickable((By.XPATH,'/html/body/div[5]/div/div[2]/form/div[1]/div[1]/div[1]/div[2]/div/div[2]/input')))
         data_emis.click()
         data_emis.send_keys(pedido.data.strftime("%d/%m/%Y"))
         time.sleep(3)
