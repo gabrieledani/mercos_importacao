@@ -24,14 +24,25 @@ navegador.get("https://app.mercos.com/")
 #navegador.maximize_window()
 time.sleep(5)
 
+action = ActionChains(navegador)
+
+'''
+# send keys
+action.send_keys("Arrays")
+# perform the operation
+action.perform()        
+'''
+
 #autenticacao
 usuario = wait.until(ec.presence_of_element_located((By.ID,'id_usuario')))
 usuario.send_keys('gabrieledani@gmail.com')
+
 senha = wait.until(ec.presence_of_element_located((By.ID,'id_senha')))
 senha.send_keys('Vedafil2022')
 
 lg = wait.until(ec.element_to_be_clickable((By.ID,"botaoEfetuarLogin")))
-lg.click()
+navegador.execute_script("arguments[0].scrollIntoView();", lg)
+navegador.execute_script("arguments[0].click();", lg)
 
 vlr_frete = 'CIF (Frete Pago)'
 vlr_cond = '28/42/56'
@@ -51,36 +62,34 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
 
         #aba Pedidos
         aba = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="aba_pedidos"]')))
-        aba.click()
+        navegador.execute_script("arguments[0].scrollIntoView();", aba)
+        navegador.execute_script("arguments[0].click();", aba)
+
         criar = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="btn_criar_pedido"]')))
-        criar.click()
+        navegador.execute_script("arguments[0].scrollIntoView();", criar)
+        navegador.execute_script("arguments[0].click();", criar)
         
         print('cliente')
-        cliente = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_codigo_cliente"]')))
-        cliente.send_keys(cnpj)
+        action.send_keys(cnpj).perform()
         cli_pro = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="div_campo_id_codigo_cliente"]/ul/li[1]')))
-        cli_pro.click()
+        navegador.execute_script("arguments[0].scrollIntoView();", cli_pro)
+        navegador.execute_script("arguments[0].click();", cli_pro)
 
         print('representada')
-        representada = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_codigo_representada"]')))
-        representada.send_keys(vlr_repr)
+        action.send_keys(vlr_repr).perform()
         rep_pro = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="div_campo_id_codigo_representada"]/ul/li[1]')))
-        rep_pro.click()
-        time.sleep(5)
+        navegador.execute_script("arguments[0].scrollIntoView();", rep_pro)
+        navegador.execute_script("arguments[0].click();", rep_pro)
 
         print('produto')
-        produto = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="produto_autocomplete"]')))
-        #navegador.execute_script("arguments[0].scrollIntoView();", produto)
-        produto.send_keys(pedido.produto)
-        time.sleep(5)
+        action.send_keys(pedido.produto).perform()
+        time.sleep(2)
         adc_pro = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="div_adicionar_produto"]/ul/li[1]')))
         navegador.execute_script("arguments[0].scrollIntoView();", adc_pro)
-        adc_pro.click()
-        #time.sleep(3)
+        navegador.execute_script("arguments[0].click();", adc_pro)
 
         print('quantidade')
-        quantidade = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_quantidade"]')))
-        quantidade.send_keys(pedido.quantidade)
+        action.send_keys(pedido.quantidade).perform()
 
         print('preço')
         valor = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_preco_final"]')))
@@ -94,24 +103,25 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
 
         print('salva produto')
         slv_pro =  wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="adicao_produto"]/form/div[3]/a[1]')))
-        slv_pro.click()
+        navegador.execute_script("arguments[0].scrollIntoView();", slv_pro)
+        navegador.execute_script("arguments[0].click();", slv_pro)
 
     elif pedido.acao == 0:
         print('continua informando produtos',pedido.produto)
         
         print('produto')
-        produto = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="produto_autocomplete"]')))
-        #navegador.execute_script("arguments[0].scrollIntoView();", produto)
-        produto.send_keys(pedido.produto)
-        time.sleep(5)
+        #######//*[@id="produto_autocomplete"]
+        produto = wait.until(ec.element_to_be_clickable((By.XPATH,'//input[@id="produto_autocomplete"]')))
+        navegador.execute_script("arguments[0].scrollIntoView();", produto)
+        navegador.execute_script("arguments[0].click();", produto)
+        action.send_keys(pedido.produto).perform()
+        time.sleep(2)
         adc_pro = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="div_adicionar_produto"]/ul/li[1]')))
-        #navegador.execute_script("arguments[0].scrollIntoView();", adc_pro)
-        adc_pro.click()
-        #time.sleep(3)
+        navegador.execute_script("arguments[0].scrollIntoView();", adc_pro)
+        navegador.execute_script("arguments[0].click();", adc_pro)
 
         print('quantidade')
-        quantidade = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_quantidade"]')))
-        quantidade.send_keys(pedido.quantidade)
+        action.send_keys(pedido.quantidade).perform()
 
         print('preço')
         valor = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_preco_final"]')))
@@ -125,24 +135,24 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
 
         print('salva produto')
         slv_pro =  wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="adicao_produto"]/form/div[3]/a[1]')))
-        slv_pro.click()
+        navegador.execute_script("arguments[0].scrollIntoView();", slv_pro)
+        navegador.execute_script("arguments[0].click();", slv_pro)
 
     elif pedido.acao == 3:
         print('ultimo produto',pedido.produto)
         
         print('produto')
-        produto = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="produto_autocomplete"]')))
-        #navegador.execute_script("arguments[0].scrollIntoView();", produto)
-        produto.send_keys(pedido.produto)
-        time.sleep(5)
+        produto = wait.until(ec.element_to_be_clickable((By.XPATH,'//input[@id="produto_autocomplete"]')))
+        navegador.execute_script("arguments[0].scrollIntoView();", produto)
+        navegador.execute_script("arguments[0].click();", produto)
+        action.send_keys(pedido.produto).perform()
+        time.sleep(2)
         adc_pro = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="div_adicionar_produto"]/ul/li[1]')))
-        #navegador.execute_script("arguments[0].scrollIntoView();", adc_pro)
-        adc_pro.click()
-        #time.sleep(3)
+        navegador.execute_script("arguments[0].scrollIntoView();", adc_pro)
+        navegador.execute_script("arguments[0].click();", adc_pro)
 
         print('quantidade')
-        quantidade = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_quantidade"]')))
-        quantidade.send_keys(pedido.quantidade)
+        action.send_keys(pedido.quantidade).perform()
 
         print('preço')
         valor = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_preco_final"]')))
@@ -156,7 +166,8 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
 
         print('salva produto')
         slv_pro =  wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="adicao_produto"]/form/div[3]/a[1]')))
-        slv_pro.click()
+        navegador.execute_script("arguments[0].scrollIntoView();", slv_pro)
+        navegador.execute_script("arguments[0].click();", slv_pro)
         
         print('terminei produtos')
         terminei_prod = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="botao_terminei_de_adicionar"]')))
@@ -164,30 +175,33 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         navegador.execute_script("arguments[0].click();", terminei_prod)
 
         print('vendedor')
-        vendedor = wait.until(ec.presence_of_element_located((By.XPATH,'//*[@id="id_criador"]')))
+        vendedor = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_criador"]')))
         vendedor.send_keys(pedido.vendedor)
 
         print('pagamento')
-        cond_pgto = wait.until(ec.presence_of_element_located((By.XPATH,'//*[@id="id_cond_pagamento"]')))
+        cond_pgto = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_cond_pagamento"]')))
         cond_pgto.send_keys(vlr_cond)
 
         print('frete')
-        frete = wait.until(ec.presence_of_element_located((By.XPATH,'//*[@id="id_transportadora"]')))
+        frete = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_transportadora"]')))
         frete.send_keys(vlr_frete)
         
         print('salva pedido')
         slv_pdv = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="simplest_modal"]/div[2]/form/div[2]/a[1]')))
-        slv_pdv.click()
+        navegador.execute_script("arguments[0].scrollIntoView();", slv_pdv)
+        navegador.execute_script("arguments[0].click();", slv_pdv)
 
         print('GERAR PEDIDO...')
         #gera_pedido = wait.until(ec.element_to_be_clickable((By.LINK_TEXT,'Transformar em pedido')))
         gera_pedido = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="gritter-item-1"]/div[2]/div[2]/div/a[1]')))
-        gera_pedido.click()
+        navegador.execute_script("arguments[0].scrollIntoView();", gera_pedido)
+        navegador.execute_script("arguments[0].click();", gera_pedido)
 
         print('alterar pedido')
         alterar = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="alterar_informacoes"]')))
         navegador.execute_script("arguments[0].scrollIntoView();", alterar)
         navegador.execute_script("arguments[0].click();", alterar)
+        time.sleep(4)
 
         print('data emissao')
         data_emis = wait.until(ec.presence_of_element_located((By.XPATH,'//*[@id="id_data_emissao"]')))
@@ -196,45 +210,45 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
 
         print('salva pedido')
         slv_pdv = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="simplest_modal"]/div[2]/form/div[2]/a[1]')))
-        slv_pdv.click()
+        navegador.execute_script("arguments[0].scrollIntoView();", slv_pdv)
+        navegador.execute_script("arguments[0].click();", slv_pdv)
     
     elif pedido.acao == 2:
         print('informa cliente e representada e primeiro produto')
 
         #aba Pedidos
         aba = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="aba_pedidos"]')))
-        aba.click()
+        navegador.execute_script("arguments[0].scrollIntoView();", aba)
+        navegador.execute_script("arguments[0].click();", aba)
+
         criar = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="btn_criar_pedido"]')))
-        criar.click()
+        navegador.execute_script("arguments[0].scrollIntoView();", criar)
+        navegador.execute_script("arguments[0].click();", criar)
         
         print('cliente')
-        cliente = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_codigo_cliente"]')))
-        cliente.send_keys(cnpj)
+        action.send_keys(cnpj).perform()
         cli_pro = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="div_campo_id_codigo_cliente"]/ul/li[1]')))
-        cli_pro.click()
+        navegador.execute_script("arguments[0].scrollIntoView();", cli_pro)
+        navegador.execute_script("arguments[0].click();", cli_pro)
 
         print('representada')
-        representada = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_codigo_representada"]')))
-        representada.send_keys(vlr_repr)
+        action.send_keys(vlr_repr).perform()
         rep_pro = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="div_campo_id_codigo_representada"]/ul/li[1]')))
-        rep_pro.click()
+        navegador.execute_script("arguments[0].scrollIntoView();", rep_pro)
+        navegador.execute_script("arguments[0].click();", rep_pro)
 
         print('produto')
-        produto = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="produto_autocomplete"]')))
-        navegador.execute_script("arguments[0].scrollIntoView();", produto)
-        produto.send_keys(pedido.produto)
-        time.sleep(5)
+        action.send_keys(pedido.produto).perform()
+        time.sleep(2)
         adc_pro = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="div_adicionar_produto"]/ul/li[1]')))
         navegador.execute_script("arguments[0].scrollIntoView();", adc_pro)
-        adc_pro.click()
-        time.sleep(3)
+        navegador.execute_script("arguments[0].click();", adc_pro)
 
         print('quantidade')
-        quantidade = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_quantidade"]')))
-        quantidade.send_keys(pedido.quantidade)
+        action.send_keys(pedido.quantidade).perform()
 
         print('preço')
-        valor = wait.until(ec.presence_of_element_located((By.XPATH,'//*[@id="id_preco_final"]')))
+        valor = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_preco_final"]')))
         valor.clear()
         preco = str(round(pedido.valor,10)).replace('.',',')
         valor.send_keys(preco)
@@ -245,7 +259,8 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
 
         print('salva produto')
         slv_pro =  wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="adicao_produto"]/form/div[3]/a[1]')))
-        slv_pro.click()
+        navegador.execute_script("arguments[0].scrollIntoView();", slv_pro)
+        navegador.execute_script("arguments[0].click();", slv_pro)
         
         print('terminei produtos')
         terminei_prod = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="botao_terminei_de_adicionar"]')))
@@ -253,30 +268,33 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         navegador.execute_script("arguments[0].click();", terminei_prod)
 
         print('vendedor')
-        vendedor = wait.until(ec.presence_of_element_located((By.XPATH,'//*[@id="id_criador"]')))
+        vendedor = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_criador"]')))
         vendedor.send_keys(pedido.vendedor)
 
         print('pagamento')
-        cond_pgto = wait.until(ec.presence_of_element_located((By.XPATH,'//*[@id="id_cond_pagamento"]')))
+        cond_pgto = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_cond_pagamento"]')))
         cond_pgto.send_keys(vlr_cond)
 
         print('frete')
-        frete = wait.until(ec.presence_of_element_located((By.XPATH,'//*[@id="id_transportadora"]')))
+        frete = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_transportadora"]')))
         frete.send_keys(vlr_frete)
         
         print('salva pedido')
         slv_pdv = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="simplest_modal"]/div[2]/form/div[2]/a[1]')))
-        slv_pdv.click()
+        navegador.execute_script("arguments[0].scrollIntoView();", slv_pdv)
+        navegador.execute_script("arguments[0].click();", slv_pdv)
 
         print('GERAR PEDIDO...')
         #gera_pedido = wait.until(ec.element_to_be_clickable((By.LINK_TEXT,'Transformar em pedido')))
         gera_pedido = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="gritter-item-1"]/div[2]/div[2]/div/a[1]')))
-        gera_pedido.click()
+        navegador.execute_script("arguments[0].scrollIntoView();", gera_pedido)
+        navegador.execute_script("arguments[0].click();", gera_pedido)
 
         print('alterar pedido')
         alterar = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="alterar_informacoes"]')))
         navegador.execute_script("arguments[0].scrollIntoView();", alterar)
         navegador.execute_script("arguments[0].click();", alterar)
+        time.sleep(4)
 
         print('data emissao')
         data_emis = wait.until(ec.presence_of_element_located((By.XPATH,'//*[@id="id_data_emissao"]')))
@@ -285,6 +303,7 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
 
         print('salva pedido')
         slv_pdv = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="simplest_modal"]/div[2]/form/div[2]/a[1]')))
-        slv_pdv.click()
+        navegador.execute_script("arguments[0].scrollIntoView();", slv_pdv)
+        navegador.execute_script("arguments[0].click();", slv_pdv)
 
 time.sleep(20)
