@@ -48,7 +48,7 @@ vlr_frete = 'CIF (Frete Pago)'
 vlr_cond = '28/42/56'
 vlr_repr = 'Hengst Indústria de Filtros Ltda'
 
-df_pedidos = pd.read_excel('banco_hengst_2013.xlsx')
+df_pedidos = pd.read_excel('banco_hengst_2013_b.xlsx')
 
 for pedido in df_pedidos.itertuples(name='pedidos',index=False):
     print('Pedido->',pedido)
@@ -60,14 +60,15 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
     if pedido.acao == 1:
         print('primeiro produto do pedido de vários')
 
-        #aba Pedidos
+        print('aba pedidos')
         aba = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="aba_pedidos"]')))
         navegador.execute_script("arguments[0].scrollIntoView();", aba)
-        navegador.execute_script("arguments[0].click();", aba)
+        aba.click()
 
+        print('botão pedidos')
         criar = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="btn_criar_pedido"]')))
         navegador.execute_script("arguments[0].scrollIntoView();", criar)
-        navegador.execute_script("arguments[0].click();", criar)
+        criar.click()
         
         print('cliente')
         action.send_keys(cnpj).perform()
