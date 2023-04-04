@@ -1,0 +1,41 @@
+Pedido->pedidos(num=1, acao=1, CNPJ='92.189.695/0002-09', produto='E1013L', quantidade=10, valor=118.955963, vendedor='Fernando Senna', data=Timestamp('2015-01-05 00:00:00'))primeiro produto do pedido de vários
+aba pedidos
+botão pedidos
+cliente92189695000209
+representadaHengst Indústria de Filtros Ltda
+produtoE1013L
+quantidade10
+preço antes118.955963
+preço formatado118,955963
+info_ad
+salva produto
+Pedido->pedidos(num=2, acao=0, CNPJ='92.189.695/0002-09', produto='E160H01 D28', quantidade=120, valor=8.96961712, vendedor='Fernando Senna', data=Timestamp('2015-01-05 00:00:00'))continua informando produtos E160H01 D28
+produtoE160H01 D28
+quantidade120
+preço antes8.96961712
+preço formatado8,96961712
+info_ad
+salva produto
+Pedido->pedidos(num=3, acao=0, CNPJ='92.189.695/0002-09', produto='E500KP02 D36', quantidade=84, valor=28.78638115, vendedor='Fernando Senna', data=Timestamp('2015-01-05 00:00:00'))continua informando produtos E500KP02 D36
+produtoE500KP02 D36
+quantidade84
+preço antes28.78638115
+preço formatado28,78638115
+info_ad
+salva produto
+Pedido->pedidos(num=4, acao=3, CNPJ='92.189.695/0002-09', produto='H160WK', quantidade=6, valor=30.65302006, vendedor='Fernando Senna', data=Timestamp('2015-01-05 00:00:00'))ultimo produto H160WK
+produtoH160WK
+quantidade6
+preço antes30.65302006
+preço formatado30,65302006
+info_ad
+salva produto
+terminei produtos
+vendedorFernando Senna
+pagamento28/42/56
+freteCIF (Frete Pago)
+salva pedido
+GERAR PEDIDO...
+alterar pedido
+data emissao
+salva pedido
