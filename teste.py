@@ -51,7 +51,7 @@ vlr_frete = 'CIF (Frete Pago)'
 vlr_cond = '28/42/56'
 vlr_repr = 'Hengst Indústria de Filtros Ltda'
 
-df_pedidos = pd.read_excel('banco_hengst_2015_b.xlsx')
+df_pedidos = pd.read_excel('banco_hengst_2015.xlsx')
 
 file = open('resultado.txt','w')
 
