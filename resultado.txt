@@ -1,212 +1,107 @@
-Pedido->pedidos(num=1, acao=1, CNPJ='07.426.684/0001-37', produto='E103H D159', quantidade=6, valor=10.28901947, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))primeiro produto do pedido de vários
+Pedido->pedidos(num=1, acao=1, CNPJ='92.672.765/0001-96', produto='E115H01 D208', quantidade=20, valor=15.57539418, vendedor='Fernando Senna', data=Timestamp('2015-10-23 00:00:00'))primeiro produto do pedido de vários
 aba pedidos
 botão pedidos
-cliente07426684000137
+cliente92672765000196
 representadaHengst Indústria de Filtros Ltda
-produtoE103H D159
-quantidade6
-preço antes10.28901947
-preço formatado10,28901947
-info_ad
-salva produto
-Pedido->pedidos(num=2, acao=0, CNPJ='07.426.684/0001-37', produto='E1051L', quantidade=5, valor=38.58418736, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E1051L
-produtoE1051L
-quantidade5
-preço antes38.58418736
-preço formatado38,58418736
-info_ad
-salva produto
-Pedido->pedidos(num=3, acao=0, CNPJ='07.426.684/0001-37', produto='E106H D34', quantidade=10, valor=13.34363741, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E106H D34
-produtoE106H D34
-quantidade10
-preço antes13.34363741
-preço formatado13,34363741
-info_ad
-salva produto
-Pedido->pedidos(num=4, acao=0, CNPJ='07.426.684/0001-37', produto='E123H01 D194', quantidade=20, valor=28.84371372, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E123H01 D194
-produtoE123H01 D194
+produtoE115H01 D208
 quantidade20
-preço antes28.84371372
-preço formatado28,84371372
+preço antes15.57539418
+preço formatado15,57539418
 info_ad
 salva produto
-Pedido->pedidos(num=5, acao=0, CNPJ='07.426.684/0001-37', produto='E146H D108', quantidade=10, valor=8.8439483, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E146H D108
-produtoE146H D108
+Pedido->pedidos(num=2, acao=0, CNPJ='92.672.765/0001-96', produto='E115H01 D208', quantidade=20, valor=14.79562858, vendedor='Fernando Senna', data=Timestamp('2015-10-23 00:00:00'))continua informando produtos E115H01 D208
+produtoE115H01 D208
+quantidade20
+preço antes14.79562858
+preço formatado14,79562858
+info_ad
+salva produto
+Pedido->pedidos(num=3, acao=0, CNPJ='92.672.765/0001-96', produto='E11H D204', quantidade=10, valor=11.81869847, vendedor='Fernando Senna', data=Timestamp('2015-10-23 00:00:00'))continua informando produtos E11H D204
+produtoE11H D204
 quantidade10
-preço antes8.8439483
-preço formatado8,8439483
+preço antes11.81869847
+preço formatado11,81869847
 info_ad
 salva produto
-Pedido->pedidos(num=6, acao=0, CNPJ='07.426.684/0001-37', produto='E14H D77', quantidade=10, valor=17.96427894, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E14H D77
-produtoE14H D77
-quantidade10
-preço antes17.96427894
-preço formatado17,96427894
-info_ad
-salva produto
-Pedido->pedidos(num=7, acao=0, CNPJ='07.426.684/0001-37', produto='E161H D28', quantidade=10, valor=11.61183376, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E161H D28
+Pedido->pedidos(num=4, acao=0, CNPJ='92.672.765/0001-96', produto='E161H D28', quantidade=20, valor=12.27564183, vendedor='Fernando Senna', data=Timestamp('2015-10-23 00:00:00'))continua informando produtos E161H D28
 produtoE161H D28
-quantidade10
-preço antes11.61183376
-preço formatado11,61183376
-info_ad
-salva produto
-Pedido->pedidos(num=8, acao=0, CNPJ='07.426.684/0001-37', produto='E173L', quantidade=6, valor=14.2732913, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E173L
-produtoE173L
-quantidade6
-preço antes14.2732913
-preço formatado14,2732913
-info_ad
-salva produto
-Pedido->pedidos(num=9, acao=0, CNPJ='07.426.684/0001-37', produto='E203H04 D67', quantidade=10, valor=19.76477415, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E203H04 D67
-produtoE203H04 D67
-quantidade10
-preço antes19.76477415
-preço formatado19,76477415
-info_ad
-salva produto
-Pedido->pedidos(num=10, acao=0, CNPJ='07.426.684/0001-37', produto='E207H D221', quantidade=10, valor=33.54792249, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E207H D221
-produtoE207H D221
-quantidade10
-preço antes33.54792249
-preço formatado33,54792249
-info_ad
-salva produto
-Pedido->pedidos(num=11, acao=0, CNPJ='07.426.684/0001-37', produto='E24H D80', quantidade=10, valor=19.46910505, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E24H D80
-produtoE24H D80
-quantidade10
-preço antes19.46910505
-preço formatado19,46910505
-info_ad
-salva produto
-Pedido->pedidos(num=12, acao=0, CNPJ='07.426.684/0001-37', produto='E29H D89', quantidade=20, valor=13.05760595, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E29H D89
-produtoE29H D89
 quantidade20
-preço antes13.05760595
-preço formatado13,05760595
+preço antes12.27564183
+preço formatado12,27564183
 info_ad
 salva produto
-Pedido->pedidos(num=13, acao=0, CNPJ='07.426.684/0001-37', produto='E31H D93', quantidade=10, valor=10.33964159, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E31H D93
-produtoE31H D93
-quantidade10
-preço antes10.33964159
-preço formatado10,33964159
-info_ad
-salva produto
-Pedido->pedidos(num=14, acao=0, CNPJ='07.426.684/0001-37', produto='E38H D106', quantidade=10, valor=13.84137576, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E38H D106
-produtoE38H D106
-quantidade10
-preço antes13.84137576
-preço formatado13,84137576
-info_ad
-salva produto
-Pedido->pedidos(num=15, acao=0, CNPJ='07.426.684/0001-37', produto='E422KP D98', quantidade=10, valor=29.09907744, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E422KP D98
-produtoE422KP D98
-quantidade10
-preço antes29.09907744
-preço formatado29,09907744
-info_ad
-salva produto
-Pedido->pedidos(num=16, acao=0, CNPJ='07.426.684/0001-37', produto='E472L', quantidade=6, valor=39.47062101, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E472L
-produtoE472L
+Pedido->pedidos(num=5, acao=0, CNPJ='92.672.765/0001-96', produto='E21H D361', quantidade=6, valor=29.19206609, vendedor='Fernando Senna', data=Timestamp('2015-10-23 00:00:00'))continua informando produtos E21H D361
+produtoE21H D361
 quantidade6
-preço antes39.47062101
-preço formatado39,47062101
+preço antes29.19206609
+preço formatado29,19206609
 info_ad
 salva produto
-Pedido->pedidos(num=17, acao=0, CNPJ='07.426.684/0001-37', produto='E57KP D73', quantidade=20, valor=26.75927421, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E57KP D73
-produtoE57KP D73
-quantidade20
-preço antes26.75927421
-preço formatado26,75927421
+Pedido->pedidos(num=6, acao=0, CNPJ='92.672.765/0001-96', produto='E251H D11', quantidade=42, valor=19.66683095, vendedor='Fernando Senna', data=Timestamp('2015-10-23 00:00:00'))continua informando produtos E251H D11
+produtoE251H D11
+quantidade42
+preço antes19.66683095
+preço formatado19,66683095
 info_ad
 salva produto
-Pedido->pedidos(num=18, acao=0, CNPJ='07.426.684/0001-37', produto='E603L R', quantidade=5, valor=83.52193665, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E603L R
-produtoE603L R
-quantidade5
-preço antes83.52193665
-preço formatado83,52193665
-info_ad
-salva produto
-Pedido->pedidos(num=19, acao=0, CNPJ='07.426.684/0001-37', produto='E621L', quantidade=6, valor=30.6214332, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E621L
-produtoE621L
+Pedido->pedidos(num=7, acao=0, CNPJ='92.672.765/0001-96', produto='E2991LI', quantidade=6, valor=20.32293516, vendedor='Fernando Senna', data=Timestamp('2015-10-23 00:00:00'))continua informando produtos E2991LI
+produtoE2991LI
 quantidade6
-preço antes30.6214332
-preço formatado30,6214332
+preço antes20.32293516
+preço formatado20,32293516
 info_ad
 salva produto
-Pedido->pedidos(num=20, acao=0, CNPJ='07.426.684/0001-37', produto='E676L01', quantidade=12, valor=26.44280379, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E676L01
-produtoE676L01
-quantidade12
-preço antes26.44280379
-preço formatado26,44280379
+Pedido->pedidos(num=8, acao=0, CNPJ='92.672.765/0001-96', produto='E2992LI-2', quantidade=6, valor=23.18497846, vendedor='Fernando Senna', data=Timestamp('2015-10-23 00:00:00'))continua informando produtos E2992LI-2
+produtoE2992LI-2
+quantidade6
+preço antes23.18497846
+preço formatado23,18497846
 info_ad
 salva produto
-Pedido->pedidos(num=21, acao=0, CNPJ='07.426.684/0001-37', produto='E805L', quantidade=1, valor=58.49391576, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E805L
-produtoE805L
-quantidade1
-preço antes58.49391576
-preço formatado58,49391576
+Pedido->pedidos(num=9, acao=0, CNPJ='92.672.765/0001-96', produto='E500KP02 D36', quantidade=216, valor=28.78644805, vendedor='Fernando Senna', data=Timestamp('2015-10-23 00:00:00'))continua informando produtos E500KP02 D36
+produtoE500KP02 D36
+quantidade216
+preço antes28.78644805
+preço formatado28,78644805
 info_ad
 salva produto
-Pedido->pedidos(num=22, acao=0, CNPJ='07.426.684/0001-37', produto='E820H D245', quantidade=10, valor=26.09349279, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E820H D245
-produtoE820H D245
-quantidade10
-preço antes26.09349279
-preço formatado26,09349279
-info_ad
-salva produto
-Pedido->pedidos(num=23, acao=0, CNPJ='07.426.684/0001-37', produto='E83KP02 D140', quantidade=10, valor=31.99047921, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E83KP02 D140
-produtoE83KP02 D140
-quantidade10
-preço antes31.99047921
-preço formatado31,99047921
-info_ad
-salva produto
-Pedido->pedidos(num=24, acao=0, CNPJ='07.426.684/0001-37', produto='E90KP D164', quantidade=10, valor=6.28412159, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos E90KP D164
-produtoE90KP D164
-quantidade10
-preço antes6.28412159
-preço formatado6,28412159
-info_ad
-salva produto
-Pedido->pedidos(num=25, acao=0, CNPJ='07.426.684/0001-37', produto='H12W08', quantidade=24, valor=12.31294366, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos H12W08
-produtoH12W08
+Pedido->pedidos(num=10, acao=0, CNPJ='92.672.765/0001-96', produto='H200W04', quantidade=24, valor=23.01177153, vendedor='Fernando Senna', data=Timestamp('2015-10-23 00:00:00'))continua informando produtos H200W04
+produtoH200W04
 quantidade24
-preço antes12.31294366
-preço formatado12,31294366
+preço antes23.01177153
+preço formatado23,01177153
 info_ad
 salva produto
-Pedido->pedidos(num=26, acao=0, CNPJ='07.426.684/0001-37', produto='H14W30', quantidade=10, valor=27.33837393, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos H14W30
-produtoH14W30
-quantidade10
-preço antes27.33837393
-preço formatado27,33837393
-info_ad
-salva produto
-Pedido->pedidos(num=27, acao=0, CNPJ='07.426.684/0001-37', produto='H200W04', quantidade=12, valor=19.42966111, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos H200W04
+Pedido->pedidos(num=11, acao=0, CNPJ='92.672.765/0001-96', produto='H200W04', quantidade=12, valor=25.0192932, vendedor='Fernando Senna', data=Timestamp('2015-10-23 00:00:00'))continua informando produtos H200W04
 produtoH200W04
 quantidade12
-preço antes19.42966111
-preço formatado19,42966111
+preço antes25.0192932
+preço formatado25,0192932
 info_ad
 salva produto
-Pedido->pedidos(num=28, acao=0, CNPJ='07.426.684/0001-37', produto='H24W05', quantidade=12, valor=34.43144606, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos H24W05
-produtoH24W05
-quantidade12
-preço antes34.43144606
-preço formatado34,43144606
+Pedido->pedidos(num=12, acao=0, CNPJ='92.672.765/0001-96', produto='H230W', quantidade=24, valor=54.11468282, vendedor='Fernando Senna', data=Timestamp('2015-10-23 00:00:00'))continua informando produtos H230W
+produtoH230W
+quantidade24
+preço antes54.11468282
+preço formatado54,11468282
 info_ad
 salva produto
-Pedido->pedidos(num=29, acao=3, CNPJ='07.426.684/0001-37', produto='H704WK', quantidade=20, valor=30.64850228, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-21 00:00:00'))ultimo produto H704WK
-produtoH704WK
+Pedido->pedidos(num=13, acao=0, CNPJ='92.672.765/0001-96', produto='T250W', quantidade=24, valor=41.56726233, vendedor='Fernando Senna', data=Timestamp('2015-10-23 00:00:00'))continua informando produtos T250W
+produtoT250W
+quantidade24
+preço antes41.56726233
+preço formatado41,56726233
+info_ad
+salva produto
+Pedido->pedidos(num=14, acao=3, CNPJ='92.672.765/0001-96', produto='T300W', quantidade=20, valor=50.58114404, vendedor='Fernando Senna', data=Timestamp('2015-10-23 00:00:00'))ultimo produto T300W
+produtoT300W
 quantidade20
-preço antes30.64850228
-preço formatado30,64850228
+preço antes50.58114404
+preço formatado50,58114404
 info_ad
 salva produto
 terminei produtos
-vendedorHenrique Ballstaedt
+vendedorFernando Senna
 pagamento28/42/56
 freteCIF (Frete Pago)
 salva pedido
@@ -214,160 +109,9 @@ GERAR PEDIDO...
 alterar pedido
 data emissao
 salva pedido
-Pedido->pedidos(num=30, acao=1, CNPJ='10.762.335/0001-09', produto='E115LS', quantidade=4, valor=12.28592608, vendedor='Volnei Putzel', data=Timestamp('2015-09-21 00:00:00'))primeiro produto do pedido de vários
+Pedido->pedidos(num=15, acao=1, CNPJ='01.104.642/0001-01', produto='E1006L', quantidade=6, valor=109.86781603, vendedor='Henrique Ballstaedt', data=Timestamp('2015-10-26 00:00:00'))primeiro produto do pedido de vários
 aba pedidos
 botão pedidos
-cliente10762335000109
+cliente01104642000101
 representadaHengst Indústria de Filtros Ltda
-produtoE115LS
-quantidade4
-preço antes12.28592608
-preço formatado12,28592608
-info_ad
-salva produto
-Pedido->pedidos(num=31, acao=0, CNPJ='10.762.335/0001-09', produto='H200W01', quantidade=20, valor=14.16548958, vendedor='Volnei Putzel', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos H200W01
-produtoH200W01
-quantidade20
-preço antes14.16548958
-preço formatado14,16548958
-info_ad
-salva produto
-Pedido->pedidos(num=32, acao=0, CNPJ='10.762.335/0001-09', produto='H200W04', quantidade=40, valor=18.99869455, vendedor='Volnei Putzel', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos H200W04
-produtoH200W04
-quantidade40
-preço antes18.99869455
-preço formatado18,99869455
-info_ad
-salva produto
-Pedido->pedidos(num=33, acao=0, CNPJ='10.762.335/0001-09', produto='H200WDK', quantidade=10, valor=28.8877468, vendedor='Volnei Putzel', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos H200WDK
-produtoH200WDK
-quantidade10
-preço antes28.8877468
-preço formatado28,8877468
-info_ad
-salva produto
-Pedido->pedidos(num=34, acao=0, CNPJ='10.762.335/0001-09', produto='H200WDK', quantidade=30, valor=28.88779476, vendedor='Volnei Putzel', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos H200WDK
-produtoH200WDK
-quantidade30
-preço antes28.88779476
-preço formatado28,88779476
-info_ad
-salva produto
-Pedido->pedidos(num=35, acao=0, CNPJ='10.762.335/0001-09', produto='H200WN01', quantidade=10, valor=26.72460692, vendedor='Volnei Putzel', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos H200WN01
-produtoH200WN01
-quantidade10
-preço antes26.72460692
-preço formatado26,72460692
-info_ad
-salva produto
-Pedido->pedidos(num=36, acao=0, CNPJ='10.762.335/0001-09', produto='H200WN01', quantidade=20, valor=26.72400742, vendedor='Volnei Putzel', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos H200WN01
-produtoH200WN01
-quantidade20
-preço antes26.72400742
-preço formatado26,72400742
-info_ad
-salva produto
-Pedido->pedidos(num=37, acao=0, CNPJ='10.762.335/0001-09', produto='H24W05', quantidade=48, valor=34.59074219, vendedor='Volnei Putzel', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos H24W05
-produtoH24W05
-quantidade48
-preço antes34.59074219
-preço formatado34,59074219
-info_ad
-salva produto
-Pedido->pedidos(num=38, acao=0, CNPJ='10.762.335/0001-09', produto='H24W05', quantidade=24, valor=34.59129516, vendedor='Volnei Putzel', data=Timestamp('2015-09-21 00:00:00'))continua informando produtos H24W05
-produtoH24W05
-quantidade24
-preço antes34.59129516
-preço formatado34,59129516
-info_ad
-salva produto
-Pedido->pedidos(num=39, acao=3, CNPJ='10.762.335/0001-09', produto='H7118WK10', quantidade=20, valor=31.51453998, vendedor='Volnei Putzel', data=Timestamp('2015-09-21 00:00:00'))ultimo produto H7118WK10
-produtoH7118WK10
-quantidade20
-preço antes31.51453998
-preço formatado31,51453998
-info_ad
-salva produto
-terminei produtos
-vendedorVolnei Putzel
-pagamento28/42/56
-freteCIF (Frete Pago)
-salva pedido
-GERAR PEDIDO...
-alterar pedido
-data emissao
-salva pedido
-Pedido->pedidos(num=40, acao=1, CNPJ='03.611.080/0001-00', produto='E103H D159', quantidade=12, valor=10.56326381, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-22 00:00:00'))primeiro produto do pedido de vários
-aba pedidos
-botão pedidos
-cliente03611080000100
-representadaHengst Indústria de Filtros Ltda
-produtoE103H D159
-quantidade12
-preço antes10.56326381
-preço formatado10,56326381
-info_ad
-salva produto
-Pedido->pedidos(num=41, acao=0, CNPJ='03.611.080/0001-00', produto='E28H D174', quantidade=24, valor=22.96400873, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-22 00:00:00'))continua informando produtos E28H D174
-produtoE28H D174
-quantidade24
-preço antes22.96400873
-preço formatado22,96400873
-info_ad
-salva produto
-Pedido->pedidos(num=42, acao=0, CNPJ='03.611.080/0001-00', produto='H18WK03', quantidade=12, valor=21.93513348, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-22 00:00:00'))continua informando produtos H18WK03
-produtoH18WK03
-quantidade12
-preço antes21.93513348
-preço formatado21,93513348
-info_ad
-salva produto
-Pedido->pedidos(num=43, acao=0, CNPJ='03.611.080/0001-00', produto='H19W10', quantidade=48, valor=24.93339306, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-22 00:00:00'))continua informando produtos H19W10
-produtoH19W10
-quantidade48
-preço antes24.93339306
-preço formatado24,93339306
-info_ad
-salva produto
-Pedido->pedidos(num=44, acao=0, CNPJ='03.611.080/0001-00', produto='H329WK', quantidade=6, valor=35.31613734, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-22 00:00:00'))continua informando produtos H329WK
-produtoH329WK
-quantidade6
-preço antes35.31613734
-preço formatado35,31613734
-info_ad
-salva produto
-Pedido->pedidos(num=45, acao=0, CNPJ='03.611.080/0001-00', produto='H414WK', quantidade=18, valor=19.88532841, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-22 00:00:00'))continua informando produtos H414WK
-produtoH414WK
-quantidade18
-preço antes19.88532841
-preço formatado19,88532841
-info_ad
-salva produto
-Pedido->pedidos(num=46, acao=3, CNPJ='03.611.080/0001-00', produto='H704WK', quantidade=24, valor=33.12207825, vendedor='Henrique Ballstaedt', data=Timestamp('2015-09-22 00:00:00'))ultimo produto H704WK
-produtoH704WK
-quantidade24
-preço antes33.12207825
-preço formatado33,12207825
-info_ad
-salva produto
-terminei produtos
-vendedorHenrique Ballstaedt
-pagamento28/42/56
-freteCIF (Frete Pago)
-salva pedido
-GERAR PEDIDO...
-alterar pedido
-data emissao
-salva pedido
-Pedido->pedidos(num=47, acao=1, CNPJ='08.108.006/0002-70', produto='E1013L', quantidade=10, valor=118.955963, vendedor='Fernando Senna', data=Timestamp('2015-09-22 00:00:00'))primeiro produto do pedido de vários
-aba pedidos
-botão pedidos
-cliente08108006000270
-representadaHengst Indústria de Filtros Ltda
-produtoE1013L
-quantidade10
-preço antes118.955963
-preço formatado118,955963
-info_ad
-salva produto
-Pedido->pedidos(num=48, acao=0, CNPJ='08.108.006/0002-70', produto='E160H01 D28', quantidade=60, valor=9.96616381, vendedor='Fernando Senna', data=Timestamp('2015-09-22 00:00:00'))continua informando produtos E160H01 D28
+produtoE1006L
