@@ -10,10 +10,15 @@ from selenium.webdriver.common.action_chains import ActionChains
 import time
 import pandas as pd
 
+#opcoes = webdriver.FirefoxOptions()
 servico = FirefoxService(executable_path=GeckoDriverManager().install())
+#opcoes.add_experimental_option("excludeSwitches", ["enable-logging"])
+#opcoes.add_experimental_option("detach", True)
 navegador = webdriver.Firefox(service=servico)
 
 wait = WebDriverWait(navegador, 150)
+
+action = ActionChains(navegador)
 
 #element_to_be_clickable
 #presence_of_element_located
@@ -24,24 +29,18 @@ navegador.get("https://app.mercos.com/")
 #navegador.maximize_window()
 time.sleep(5)
 
-action = ActionChains(navegador)
-
-'''
-# send keys
-action.send_keys("Arrays")
-# perform the operation
-action.perform()        
-'''
-
 #autenticacao
-usuario = wait.until(ec.presence_of_element_located((By.ID,'id_usuario')))
+#usuario = wait.until(ec.presence_of_element_located((By.ID,'id_usuario')))
+usuario = navegador.find_element(By.ID,'id_usuario')
 usuario.send_keys('gabrieledani@gmail.com')
 
-senha = wait.until(ec.presence_of_element_located((By.ID,'id_senha')))
+#senha = wait.until(ec.presence_of_element_located((By.ID,'id_senha')))
+senha = navegador.find_element(By.ID,'id_senha')
 senha.send_keys('Vedafil2022')
 
-lg = wait.until(ec.element_to_be_clickable((By.ID,"botaoEfetuarLogin")))
-navegador.execute_script("arguments[0].scrollIntoView();", lg)
+#lg = wait.until(ec.element_to_be_clickable((By.ID,"botaoEfetuarLogin")))
+lg = navegador.find_element(By.ID,"botaoEfetuarLogin")
+#navegador.execute_script("arguments[0].scrollIntoView();", lg)
 #navegador.execute_script("arguments[0].click();", lg)
 lg.click()
 
@@ -50,6 +49,9 @@ vlr_cond = '28/42/56'
 vlr_repr = 'Hengst Indústria de Filtros Ltda'
 
 df_pedidos = pd.read_excel('banco_hengst_2015.xlsx')
+
+#tempooooooooo
+time.sleep(10)
 
 for pedido in df_pedidos.itertuples(name='pedidos',index=False):
     print('Pedido->',pedido)
@@ -93,7 +95,7 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         #rep_pro = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="div_campo_id_codigo_representada"]/ul/li[1]')))
         #navegador.execute_script("arguments[0].scrollIntoView();", rep_pro)
         #rep_pro.click()
-        time.sleep(1)
+        time.sleep(2)
 
         print('produto')
         action.send_keys(pedido.codigo).perform()
@@ -247,94 +249,116 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
     elif pedido.acao == 4:
         print('informa cliente e representada e primeiro produto')
 
-        #aba Pedidos
-        aba = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="aba_pedidos"]')))
+        print('aba pedidos')
+        aba = navegador.find_element(By.XPATH,'//*[@id="aba_pedidos"]')
         navegador.execute_script("arguments[0].scrollIntoView();", aba)
-        navegador.execute_script("arguments[0].click();", aba)
+        wait.until(ec.element_to_be_clickable(aba))
+        aba.click()
+        time.sleep(2)
 
-        criar = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="btn_criar_pedido"]')))
-        navegador.execute_script("arguments[0].scrollIntoView();", criar)
-        navegador.execute_script("arguments[0].click();", criar)
+        print('botão pedidos')
+        criar = navegador.find_element(By.XPATH,'//*[@id="btn_criar_pedido"]')
+        time.sleep(1)
+        wait.until(ec.element_to_be_clickable(criar))
+        time.sleep(1)
+        criar.click()
+        time.sleep(2)
         
         print('cliente')
         action.send_keys(cnpj).perform()
-        cli_pro = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="div_campo_id_codigo_cliente"]/ul/li[1]')))
-        navegador.execute_script("arguments[0].scrollIntoView();", cli_pro)
-        navegador.execute_script("arguments[0].click();", cli_pro)
+        time.sleep(1)
+        action.send_keys(Keys.ENTER).perform()
+        time.sleep(1)
 
         print('representada')
         action.send_keys(vlr_repr).perform()
-        rep_pro = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="div_campo_id_codigo_representada"]/ul/li[1]')))
-        navegador.execute_script("arguments[0].scrollIntoView();", rep_pro)
-        navegador.execute_script("arguments[0].click();", rep_pro)
+        time.sleep(1)
+        action.send_keys(Keys.ENTER).perform()
+        time.sleep(2)
 
         print('produto')
-        action.send_keys(pedido.produto).perform()
+        action.send_keys(pedido.codigo).perform()
+        time.sleep(1)
+        action.send_keys(Keys.ENTER).perform()
         time.sleep(2)
-        adc_pro = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="div_adicionar_produto"]/ul/li[1]')))
-        navegador.execute_script("arguments[0].scrollIntoView();", adc_pro)
-        navegador.execute_script("arguments[0].click();", adc_pro)
 
         print('quantidade')
-        action.send_keys(pedido.quantidade).perform()
+        quantidade = navegador.find_element(By.XPATH,'//input[@id="id_quantidade"]')
+        wait.until(ec.presence_of_element_located(quantidade))
+        quantidade.click()
+        quantidade.send_keys(pedido.quantidade)
+        time.sleep(1)
 
         print('preço')
-        valor = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_preco_final"]')))
+        valor = navegador.find_element(By.XPATH,'//input[@id="id_preco_final"]')
+        wait.until(ec.presence_of_element_located(valor))
+        valor.click()
         valor.clear()
         preco = str(round(pedido.valor,10)).replace('.',',')
         valor.send_keys(preco)
+        time.sleep(1)
 
         print('info_ad')
-        info_ad = wait.until(ec.presence_of_element_located((By.XPATH,'//*[@id="id_informacoes_adicionais"]')))
+        info_ad = navegador.find_element(By.XPATH,'//*[@id="id_informacoes_adicionais"]')
+        wait.until(ec.presence_of_element_located(info_ad))
+        info_ad.click()
         info_ad.send_keys('Importado via Excel')
+        time.sleep(1)
 
         print('salva produto')
-        slv_pro =  wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="adicao_produto"]/form/div[3]/a[1]')))
-        navegador.execute_script("arguments[0].scrollIntoView();", slv_pro)
-        navegador.execute_script("arguments[0].click();", slv_pro)
+        slv_pro =  navegador.find_element(By.XPATH,'//*[@id="adicao_produto"]/form/div[3]/a[1]')
+        wait.until(ec.element_to_be_clickable(slv_pro))
+        slv_pro.click()
         
         print('terminei produtos')
-        terminei_prod = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="botao_terminei_de_adicionar"]')))
+        terminei_prod = navegador.find_element(By.XPATH,'//*[@id="botao_terminei_de_adicionar"]')
         navegador.execute_script("arguments[0].scrollIntoView();", terminei_prod)
-        navegador.execute_script("arguments[0].click();", terminei_prod)
+        wait.until(ec.element_to_be_clickable(terminei_prod))
+        terminei_prod.click()
+        time.sleep(3)
 
         print('vendedor')
         vendedor = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_criador"]')))
         vendedor.send_keys(pedido.vendedor)
+        time.sleep(1)
 
         print('pagamento')
         cond_pgto = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_cond_pagamento"]')))
         cond_pgto.send_keys(vlr_cond)
+        time.sleep(1)
 
         print('frete')
         frete = wait.until(ec.presence_of_element_located((By.XPATH,'//input[@id="id_transportadora"]')))
         frete.send_keys(vlr_frete)
+        time.sleep(1)
         
         print('salva pedido')
         slv_pdv = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="simplest_modal"]/div[2]/form/div[2]/a[1]')))
-        navegador.execute_script("arguments[0].scrollIntoView();", slv_pdv)
-        navegador.execute_script("arguments[0].click();", slv_pdv)
+        slv_pdv.click()
+        time.sleep(1)
 
         print('GERAR PEDIDO...')
-        #gera_pedido = wait.until(ec.element_to_be_clickable((By.LINK_TEXT,'Transformar em pedido')))
-        gera_pedido = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="gritter-item-1"]/div[2]/div[2]/div/a[1]')))
+        gera_pedido = wait.until(ec.element_to_be_clickable((By.LINK_TEXT,'Transformar em pedido')))
         navegador.execute_script("arguments[0].scrollIntoView();", gera_pedido)
-        navegador.execute_script("arguments[0].click();", gera_pedido)
+        gera_pedido.click()
+        time.sleep(3)
 
         print('alterar pedido')
         alterar = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="alterar_informacoes"]')))
         navegador.execute_script("arguments[0].scrollIntoView();", alterar)
-        navegador.execute_script("arguments[0].click();", alterar)
-        time.sleep(4)
+        alterar.click()
+        time.sleep(3)
 
         print('data emissao')
         data_emis = wait.until(ec.presence_of_element_located((By.XPATH,'//*[@id="id_data_emissao"]')))
         data_emis.clear()
         data_emis.send_keys(pedido.data.strftime("%d/%m/%Y"))
+        time.sleep(1)
 
         print('salva pedido')
         slv_pdv = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="simplest_modal"]/div[2]/form/div[2]/a[1]')))
         navegador.execute_script("arguments[0].scrollIntoView();", slv_pdv)
-        navegador.execute_script("arguments[0].click();", slv_pdv)
+        slv_pdv.click()
+        time.sleep(10)
 
 time.sleep(20)
