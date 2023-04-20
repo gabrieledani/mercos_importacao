@@ -10,10 +10,15 @@ from selenium.webdriver.common.action_chains import ActionChains
 import time
 import pandas as pd
 
+#opcoes = webdriver.FirefoxOptions()
 servico = FirefoxService(executable_path=GeckoDriverManager().install())
+#opcoes.add_experimental_option("excludeSwitches", ["enable-logging"])
+#opcoes.add_experimental_option("detach", True)
 navegador = webdriver.Firefox(service=servico)
 
 wait = WebDriverWait(navegador, 150)
+
+action = ActionChains(navegador)
 
 #element_to_be_clickable
 #presence_of_element_located
@@ -24,24 +29,18 @@ navegador.get("https://app.mercos.com/")
 #navegador.maximize_window()
 time.sleep(5)
 
-action = ActionChains(navegador)
-
-'''
-# send keys
-action.send_keys("Arrays")
-# perform the operation
-action.perform()        
-'''
-
 #autenticacao
-usuario = wait.until(ec.presence_of_element_located((By.ID,'id_usuario')))
+#usuario = wait.until(ec.presence_of_element_located((By.ID,'id_usuario')))
+usuario = navegador.find_element(By.ID,'id_usuario')
 usuario.send_keys('gabrieledani@gmail.com')
 
-senha = wait.until(ec.presence_of_element_located((By.ID,'id_senha')))
+#senha = wait.until(ec.presence_of_element_located((By.ID,'id_senha')))
+senha = navegador.find_element(By.ID,'id_senha')
 senha.send_keys('Vedafil2022')
 
-lg = wait.until(ec.element_to_be_clickable((By.ID,"botaoEfetuarLogin")))
-navegador.execute_script("arguments[0].scrollIntoView();", lg)
+#lg = wait.until(ec.element_to_be_clickable((By.ID,"botaoEfetuarLogin")))
+lg = navegador.find_element(By.ID,"botaoEfetuarLogin")
+#navegador.execute_script("arguments[0].scrollIntoView();", lg)
 #navegador.execute_script("arguments[0].click();", lg)
 lg.click()
 
@@ -50,6 +49,9 @@ vlr_cond = '28/42/56'
 vlr_repr = 'Hengst Indústria de Filtros Ltda'
 
 df_pedidos = pd.read_excel('banco_hengst_2015.xlsx')
+
+#tempooooooooo
+time.sleep(10)
 
 for pedido in df_pedidos.itertuples(name='pedidos',index=False):
     print('Pedido->',pedido)

@@ -11,7 +11,10 @@ import pandas as pd
 
 servico = FirefoxService(executable_path=GeckoDriverManager().install())
 navegador = webdriver.Firefox(service=servico)
-
+options = webdriver.FirefoxOptions()
+options.binary_location = r"C:/location/to/Firefox/Binary/firefox.exe"
+driver = webdriver.Firefox(options=options, executable_path="C:/location/to/geckodriver.exe")
+driver.get('http://google.com/')
 wait = WebDriverWait(navegador, 150)
 
 #element_to_be_clickable
