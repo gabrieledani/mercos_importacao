@@ -24,7 +24,7 @@ action = ActionChains(navegador)
 #abre o sistema
 navegador.get("https://app.mercos.com/")
 #navegador.maximize_window()
-time.sleep(5)
+time.sleep(2)
 
 #autenticacao
 #usuario = wait.until(ec.visibility_of_element_located((By.ID,'id_usuario')))
@@ -64,7 +64,7 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         aba = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="aba_pedidos"]')))
         navegador.execute_script("arguments[0].scrollIntoView();", aba)
         aba.click()
-        time.sleep(2)
+        time.sleep(1)
 
         print('botão pedidos')
         criar = navegador.find_element(By.XPATH,'//*[@id="btn_criar_pedido"]')
@@ -74,7 +74,7 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         wait.until(ec.element_to_be_clickable(criar))
         time.sleep(1)
         criar.click()
-        time.sleep(2)
+        time.sleep(1)
         
         print('cliente')
         action.send_keys(cnpj).perform()
@@ -92,13 +92,13 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         #rep_pro = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="div_campo_id_codigo_representada"]/ul/li[1]')))
         #navegador.execute_script("arguments[0].scrollIntoView();", rep_pro)
         #rep_pro.click()
-        time.sleep(2)
+        time.sleep(1)
 
         print('produto')
         action.send_keys(pedido.codigo).perform()
-        time.sleep(1)
-        action.send_keys(Keys.ENTER).perform()
         time.sleep(2)
+        action.send_keys(Keys.ENTER).perform()
+        time.sleep(1)
         #adc_pro = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="div_adicionar_produto"]/ul/li[1]')))
         #navegador.execute_script("arguments[0].scrollIntoView();", adc_pro)
         #navegador.execute_script("arguments[0].click();", adc_pro)
@@ -125,17 +125,18 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         slv_pro =  wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="adicao_produto"]/form/div[3]/a[1]')))
         #navegador.execute_script("arguments[0].scrollIntoView();", slv_pro)
         slv_pro.click()
+        time.sleep(3)
 
     elif pedido.acao == 0:
         print('continua informando produtos',pedido.produto)
         
         print('produto')
         #######//*[@id="produto_autocomplete"]
-        produto = wait.until(ec.element_to_be_clickable((By.XPATH,'//input[@id="produto_autocomplete"]')))
+        produto = wait.until(ec.visibility_of_element_located((By.XPATH,'//input[@id="produto_autocomplete"]')))
         action.send_keys(pedido.codigo).perform()
-        time.sleep(1)
-        action.send_keys(Keys.ENTER).perform()
         time.sleep(2)
+        action.send_keys(Keys.ENTER).perform()
+        time.sleep(1)
 
         print('quantidade')
         quantidade = wait.until(ec.visibility_of_element_located((By.XPATH,'//input[@id="id_quantidade"]')))
@@ -158,17 +159,18 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         print('salva produto')
         slv_pro =  wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="adicao_produto"]/form/div[3]/a[1]')))
         slv_pro.click()
+        time.sleep(3)
 
     elif pedido.acao == 3:
         print('ultimo produto',pedido.produto)
         
         print('produto')
         #######//*[@id="produto_autocomplete"]
-        produto = wait.until(ec.element_to_be_clickable((By.XPATH,'//input[@id="produto_autocomplete"]')))
+        produto = wait.until(ec.visibility_of_element_located((By.XPATH,'//input[@id="produto_autocomplete"]')))
         action.send_keys(pedido.codigo).perform()
-        time.sleep(1)
-        action.send_keys(Keys.ENTER).perform()
         time.sleep(2)
+        action.send_keys(Keys.ENTER).perform()
+        time.sleep(1)
 
         print('quantidade')
         quantidade = wait.until(ec.visibility_of_element_located((By.XPATH,'//input[@id="id_quantidade"]')))
@@ -200,17 +202,17 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         time.sleep(3)
 
         print('vendedor')
-        vendedor = wait.until(ec.visibility_of_element_located((By.XPATH,'//input[@id="id_criador"]')))
+        vendedor = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="id_criador"]')))
         vendedor.send_keys(pedido.vendedor)
         time.sleep(1)
 
         print('pagamento')
-        cond_pgto = wait.until(ec.visibility_of_element_located((By.XPATH,'//input[@id="id_cond_pagamento"]')))
+        cond_pgto = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="id_cond_pagamento"]')))
         cond_pgto.send_keys(vlr_cond)
         time.sleep(1)
 
         print('frete')
-        frete = wait.until(ec.visibility_of_element_located((By.XPATH,'//input[@id="id_transportadora"]')))
+        frete = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="id_transportadora"]')))
         frete.send_keys(vlr_frete)
         time.sleep(1)
         
@@ -274,7 +276,7 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
 
         print('produto')
         action.send_keys(pedido.codigo).perform()
-        time.sleep(1)
+        time.sleep(2)
         action.send_keys(Keys.ENTER).perform()
         time.sleep(2)
 
@@ -311,17 +313,17 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         time.sleep(3)
 
         print('vendedor')
-        vendedor = wait.until(ec.visibility_of_element_located((By.XPATH,'//input[@id="id_criador"]')))
+        vendedor = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="id_criador"]')))
         vendedor.send_keys(pedido.vendedor)
         time.sleep(1)
 
         print('pagamento')
-        cond_pgto = wait.until(ec.visibility_of_element_located((By.XPATH,'//input[@id="id_cond_pagamento"]')))
+        cond_pgto = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="id_cond_pagamento"]')))
         cond_pgto.send_keys(vlr_cond)
         time.sleep(1)
 
         print('frete')
-        frete = wait.until(ec.visibility_of_element_located((By.XPATH,'//input[@id="id_transportadora"]')))
+        frete = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="id_transportadora"]')))
         frete.send_keys(vlr_frete)
         time.sleep(1)
         
