@@ -276,7 +276,6 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         time.sleep(1)
         print('cliente foi',navegador.find_element(By.ID,'selecionado_autocomplete_id_codigo_cliente').is_displayed())
 
-
         print('representada')
         repre = wait.until(ec.visibility_of_element_located((By.ID,'id_codigo_representada')))
         #action.send_keys(vlr_repr).perform()
@@ -288,19 +287,23 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
 
         print('produto')
         produto = navegador.find_element(By.ID,'produto_autocomplete')
-        #wait.until_not(ec.element_attribute_to_include((By.ID,'produto_autocomplete'),'disabled'))
+        #wait.until_not( ec.element_attribute_to_include((By.ID,'produto_autocomplete'),'disabled'))
         #wait.until(ec.element_to_be_clickable((produto)))
         while produto.get_property('disabled') == True:
             time.sleep(1)
         print(produto.is_enabled())
         print('habilitou produto')
-        action.send_keys(pedido.codigo).perform()
+        produto.send_keys(pedido.codigo)
+        #action.send_keys(pedido.codigo).perform()
+        adc_pro = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="div_adicionar_produto"]/ul/li[1]')))
+        wait.until(ec.element_to_be_clickable(adc_pro))
         time.sleep(1)
-        action.send_keys(Keys.ENTER).perform()
+        adc_pro.click()
+        #action.send_keys(Keys.ENTER).perform()
         time.sleep(1)
 
         print('quantidade')
-        quantidade = wait.until(ec.visibility_of((By.ID,'id_quantidade')))
+        quantidade = wait.until(ec.visibility_of_element_located((By.ID,'id_quantidade')))
         #quantidade = navegador.find_element(By.ID,'id_quantidade')
         '''
         while not quantidade.is_displayed:
@@ -327,26 +330,27 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         print('salva produto')
         slv_pro =  wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="adicao_produto"]/form/div[3]/a[1]')))
         slv_pro.click()
-        time.sleep(3)
+        time.sleep(1)
         
         print('terminei produtos')
-        terminei_prod = wait.until(ec.element_to_be_clickable((By.ID,'botao_terminei_de_adicionar')))
+        terminei_prod = wait.until(ec.presence_of_element_located((By.ID,'botao_terminei_de_adicionar')))
         navegador.execute_script("arguments[0].scrollIntoView();", terminei_prod)
+        wait.until(ec.element_to_be_clickable(terminei_prod))
         terminei_prod.click()
         time.sleep(3)
 
         print('vendedor')
-        vendedor = wait.until(ec.visibility_of_element_located((By.ID,'id_criador')))
+        vendedor =wait.until(ec.visibility_of_element_located((By.ID,'id_criador')))
         vendedor.send_keys(pedido.vendedor)
         time.sleep(1)
 
         print('pagamento')
-        cond_pgto = wait.until(ec.visibility_of_element_located((By.ID,'id_cond_pagamento')))
+        cond_pgto = navegador.find_element(By.ID,'id_cond_pagamento')
         cond_pgto.send_keys(vlr_cond)
         time.sleep(1)
 
         print('frete')
-        frete = wait.until(ec.visibility_of_element_located((By.ID,'id_transportadora')))
+        frete = navegador.find_element(By.ID,'id_transportadora')
         frete.send_keys(vlr_frete)
         time.sleep(1)
         
@@ -356,14 +360,16 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         time.sleep(2)
 
         print('GERAR PEDIDO...')
-        gera_pedido = wait.until(ec.element_to_be_clickable((By.LINK_TEXT,'Transformar em pedido')))
+        gera_pedido = wait.until(ec.presence_of_element_located((By.LINK_TEXT,'Transformar em pedido')))
         navegador.execute_script("arguments[0].scrollIntoView();", gera_pedido)
+        wait.until(ec.element_to_be_clickable((By.LINK_TEXT,'Transformar em pedido')))
         gera_pedido.click()
         time.sleep(3)
 
         print('alterar pedido')
-        alterar = wait.until(ec.element_to_be_clickable((By.ID,'alterar_informacoes')))
+        alterar = wait.until(ec.presence_of_element_located((By.ID,'alterar_informacoes')))
         navegador.execute_script("arguments[0].scrollIntoView();", alterar)
+        wait.until(ec.element_to_be_clickable((By.ID,'alterar_informacoes')))
         alterar.click()
         time.sleep(3)
 
