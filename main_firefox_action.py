@@ -16,8 +16,7 @@ servico = FirefoxService(executable_path=GeckoDriverManager().install())
 #opcoes.add_experimental_option("detach", True)
 navegador = webdriver.Firefox(service=servico)
 
-wait = WebDriverWait(navegador, 20)
-
+wait = WebDriverWait(navegador, 50)
 action = ActionChains(navegador)
 
 
@@ -63,13 +62,13 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         print('aba pedidos')
         #aba = navegador.find_element(By.XPATH,'//*[@id="aba_pedidos"]')
         #navegador.execute_script("arguments[0].scrollIntoView();", aba)
-        aba = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="aba_pedidos"]')))
+        aba = wait.until(ec.element_to_be_clickable((By.ID,'aba_pedidos')))
         time.sleep(1)
         aba.click()
         time.sleep(2)
 
         print('botão pedidos')
-        criar = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="btn_criar_pedido"]')))
+        criar = wait.until(ec.element_to_be_clickable((By.ID,'btn_criar_pedido')))
         #time.sleep(1)
         #navegador.execute_script("arguments[0].scrollIntoView();", criar)
         #time.sleep(1)
@@ -96,9 +95,9 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         time.sleep(3)
 
         print('produto')
-        produto = wait.until(ec.element_to_be_clickable((By.XPATH,'//input[@id="produto_autocomplete"]')))
+        produto = wait.until(ec.element_to_be_clickable((By.ID,'produto_autocomplete')))
         action.send_keys(pedido.codigo).perform()
-        time.sleep(1)
+        time.sleep(3)
         #adc_pro = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="div_adicionar_produto"]/ul/li[1]')))
         action.send_keys(Keys.ENTER).perform()
         time.sleep(3)
@@ -106,7 +105,7 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         #navegador.execute_script("arguments[0].click();", adc_pro)
 
         print('quantidade')
-        quantidade = wait.until(ec.visibility_of_element_located((By.XPATH,'//input[@id="id_quantidade"]')))
+        quantidade = wait.until(ec.visibility_of_element_located((By.ID,'id_quantidade')))
         #action.send_keys(pedido.quantidade).perform()
         #time.sleep(1)
         #action.send_keys(Keys.TAB).perform()
@@ -114,7 +113,7 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         time.sleep(1)
 
         print('preço')
-        valor = wait.until(ec.visibility_of_element_located((By.XPATH,'//input[@id="id_preco_final"]')))
+        valor = wait.until(ec.visibility_of_element_located((By.ID,'id_preco_final')))
         valor.click()
         valor.clear()
         preco = str(round(pedido.valor,10)).replace('.',',')
@@ -122,7 +121,7 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         time.sleep(1)
 
         print('info_ad')
-        info_ad = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="id_informacoes_adicionais"]')))
+        info_ad = wait.until(ec.visibility_of_element_located((By.ID,'id_informacoes_adicionais')))
         info_ad.click()
         info_ad.send_keys('Importado via Excel')
         time.sleep(1)
@@ -137,21 +136,20 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         print('continua informando produtos',pedido.produto)
         
         print('produto')
-        #######//*[@id="produto_autocomplete"]
-        produto = wait.until(ec.visibility_of_element_located((By.XPATH,'//input[@id="produto_autocomplete"]')))
-        produto = wait.until(ec.element_to_be_clickable((By.XPATH,'//input[@id="produto_autocomplete"]')))
+        produto = wait.until(ec.visibility_of_element_located((By.ID,'produto_autocomplete')))
+        produto = wait.until(ec.element_to_be_clickable((By.ID,'produto_autocomplete')))
         action.send_keys(pedido.codigo).perform()
-        time.sleep(1)
+        time.sleep(3)
         action.send_keys(Keys.ENTER).perform()
         time.sleep(3)
 
         print('quantidade')
-        quantidade = wait.until(ec.visibility_of_element_located((By.XPATH,'//input[@id="id_quantidade"]')))
+        quantidade = wait.until(ec.visibility_of_element_located((By.ID,'id_quantidade')))
         quantidade.send_keys(pedido.quantidade)
         time.sleep(1)
 
         print('preço')
-        valor = wait.until(ec.visibility_of_element_located((By.XPATH,'//input[@id="id_preco_final"]')))
+        valor = wait.until(ec.visibility_of_element_located((By.ID,'id_preco_final')))
         valor.click()
         valor.clear()
         preco = str(round(pedido.valor,10)).replace('.',',')
@@ -159,7 +157,7 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         time.sleep(1)
 
         print('info_ad')
-        info_ad = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="id_informacoes_adicionais"]')))
+        info_ad = wait.until(ec.visibility_of_element_located((By.ID,'id_informacoes_adicionais')))
         info_ad.click()
         info_ad.send_keys('Importado via Excel')
         time.sleep(1)
@@ -173,21 +171,20 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         print('ultimo produto',pedido.produto)
         
         print('produto')
-        #######//*[@id="produto_autocomplete"]
-        produto = wait.until(ec.visibility_of_element_located((By.XPATH,'//input[@id="produto_autocomplete"]')))
-        produto = wait.until(ec.element_to_be_clickable((By.XPATH,'//input[@id="produto_autocomplete"]')))
+        produto = wait.until(ec.visibility_of_element_located((By.ID,'produto_autocomplete')))
+        produto = wait.until(ec.element_to_be_clickable((By.ID,'produto_autocomplete')))
         action.send_keys(pedido.codigo).perform()
-        time.sleep(1)
+        time.sleep(3)
         action.send_keys(Keys.ENTER).perform()
         time.sleep(3)
 
         print('quantidade')
-        quantidade = wait.until(ec.visibility_of_element_located((By.XPATH,'//input[@id="id_quantidade"]')))
+        quantidade = wait.until(ec.visibility_of_element_located((By.ID,'id_quantidade')))
         quantidade.send_keys(pedido.quantidade)
         time.sleep(1)
 
         print('preço')
-        valor = wait.until(ec.visibility_of_element_located((By.XPATH,'//input[@id="id_preco_final"]')))
+        valor = wait.until(ec.visibility_of_element_located((By.ID,'id_preco_final')))
         valor.click()
         valor.clear()
         preco = str(round(pedido.valor,10)).replace('.',',')
@@ -195,7 +192,7 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         time.sleep(1)
 
         print('info_ad')
-        info_ad = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="id_informacoes_adicionais"]')))
+        info_ad = wait.until(ec.visibility_of_element_located((By.ID,'id_informacoes_adicionais')))
         info_ad.click()
         info_ad.send_keys('Importado via Excel')
         time.sleep(1)
@@ -206,23 +203,23 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         time.sleep(3)
         
         print('terminei produtos')
-        terminei_prod = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="botao_terminei_de_adicionar"]')))
+        terminei_prod = wait.until(ec.element_to_be_clickable((By.ID,'botao_terminei_de_adicionar')))
         navegador.execute_script("arguments[0].scrollIntoView();", terminei_prod)
         terminei_prod.click()
         time.sleep(3)
 
         print('vendedor')
-        vendedor = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="id_criador"]')))
+        vendedor = wait.until(ec.visibility_of_element_located((By.ID,'id_criador')))
         vendedor.send_keys(pedido.vendedor)
         time.sleep(1)
 
         print('pagamento')
-        cond_pgto = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="id_cond_pagamento"]')))
+        cond_pgto = wait.until(ec.visibility_of_element_located((By.ID,'id_cond_pagamento')))
         cond_pgto.send_keys(vlr_cond)
         time.sleep(1)
 
         print('frete')
-        frete = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="id_transportadora"]')))
+        frete = wait.until(ec.visibility_of_element_located((By.ID,'id_transportadora')))
         frete.send_keys(vlr_frete)
         time.sleep(1)
         
@@ -238,13 +235,13 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         time.sleep(3)
 
         print('alterar pedido')
-        alterar = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="alterar_informacoes"]')))
+        alterar = wait.until(ec.element_to_be_clickable((By.ID,'alterar_informacoes')))
         navegador.execute_script("arguments[0].scrollIntoView();", alterar)
         alterar.click()
         time.sleep(3)
 
         print('data emissao')
-        data_emis = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="id_data_emissao"]')))
+        data_emis = wait.until(ec.visibility_of_element_located((By.ID,'id_data_emissao')))
         data_emis.clear()
         data_emis.send_keys(pedido.data.strftime("%d/%m/%Y"))
         time.sleep(1)
@@ -259,43 +256,62 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         print('informa cliente e representada e primeiro produto')
 
         print('aba pedidos')
-        aba = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="aba_pedidos"]')))
+        aba = wait.until(ec.element_to_be_clickable((By.ID,'aba_pedidos')))
         time.sleep(1)
         aba.click()
-        time.sleep(2)
+        #time.sleep(1)
 
         print('botão pedidos')
-        criar = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="btn_criar_pedido"]')))
+        criar = wait.until(ec.element_to_be_clickable((By.ID,'btn_criar_pedido')))
         time.sleep(1)
         criar.click()
-        time.sleep(2)
+        #time.sleep(2)
         
         print('cliente')
-        action.send_keys(cnpj).perform()
+        cliente = wait.until(ec.visibility_of_element_located((By.ID,'id_codigo_cliente')))
+        #action.send_keys(cnpj).perform()
+        cliente.send_keys(cnpj)
         time.sleep(1)
         action.send_keys(Keys.ENTER).perform()
-        time.sleep(2)
+        time.sleep(1)
+        print('cliente foi',navegador.find_element(By.ID,'selecionado_autocomplete_id_codigo_cliente').is_displayed())
+
 
         print('representada')
-        action.send_keys(vlr_repr).perform()
+        repre = wait.until(ec.visibility_of_element_located((By.ID,'id_codigo_representada')))
+        #action.send_keys(vlr_repr).perform()
+        repre.send_keys(vlr_repr)
         time.sleep(1)
         action.send_keys(Keys.ENTER).perform()
-        time.sleep(3)
+        time.sleep(1)
+        print('representada foi',navegador.find_element(By.ID,'selecionado_autocomplete_id_codigo_representada').is_displayed())
 
         print('produto')
-        produto = wait.until(ec.element_to_be_clickable((By.XPATH,'//input[@id="produto_autocomplete"]')))
+        produto = navegador.find_element(By.ID,'produto_autocomplete')
+        #wait.until_not(ec.element_attribute_to_include((By.ID,'produto_autocomplete'),'disabled'))
+        #wait.until(ec.element_to_be_clickable((produto)))
+        while produto.get_property('disabled') == True:
+            time.sleep(1)
+        print(produto.is_enabled())
+        print('habilitou produto')
         action.send_keys(pedido.codigo).perform()
         time.sleep(1)
         action.send_keys(Keys.ENTER).perform()
-        time.sleep(3)
+        time.sleep(1)
 
         print('quantidade')
-        quantidade = wait.until(ec.visibility_of_element_located((By.XPATH,'//input[@id="id_quantidade"]')))
+        quantidade = wait.until(ec.visibility_of((By.ID,'id_quantidade')))
+        #quantidade = navegador.find_element(By.ID,'id_quantidade')
+        '''
+        while not quantidade.is_displayed:
+            action.send_keys(Keys.ENTER).perform()
+            time.sleep(1)
+        '''
         quantidade.send_keys(pedido.quantidade)
         time.sleep(1)
 
         print('preço')
-        valor = wait.until(ec.visibility_of_element_located((By.XPATH,'//input[@id="id_preco_final"]')))
+        valor = wait.until(ec.element_to_be_clickable((By.ID,'id_preco_final')))
         valor.click()
         valor.clear()
         preco = str(round(pedido.valor,10)).replace('.',',')
@@ -303,7 +319,7 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         time.sleep(1)
 
         print('info_ad')
-        info_ad = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="id_informacoes_adicionais"]')))
+        info_ad = wait.until(ec.element_to_be_clickable((By.ID,'id_informacoes_adicionais')))
         info_ad.click()
         info_ad.send_keys('Importado via Excel')
         time.sleep(1)
@@ -314,23 +330,23 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         time.sleep(3)
         
         print('terminei produtos')
-        terminei_prod = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="botao_terminei_de_adicionar"]')))
+        terminei_prod = wait.until(ec.element_to_be_clickable((By.ID,'botao_terminei_de_adicionar')))
         navegador.execute_script("arguments[0].scrollIntoView();", terminei_prod)
         terminei_prod.click()
         time.sleep(3)
 
         print('vendedor')
-        vendedor = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="id_criador"]')))
+        vendedor = wait.until(ec.visibility_of_element_located((By.ID,'id_criador')))
         vendedor.send_keys(pedido.vendedor)
         time.sleep(1)
 
         print('pagamento')
-        cond_pgto = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="id_cond_pagamento"]')))
+        cond_pgto = wait.until(ec.visibility_of_element_located((By.ID,'id_cond_pagamento')))
         cond_pgto.send_keys(vlr_cond)
         time.sleep(1)
 
         print('frete')
-        frete = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="id_transportadora"]')))
+        frete = wait.until(ec.visibility_of_element_located((By.ID,'id_transportadora')))
         frete.send_keys(vlr_frete)
         time.sleep(1)
         
@@ -346,13 +362,13 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         time.sleep(3)
 
         print('alterar pedido')
-        alterar = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="alterar_informacoes"]')))
+        alterar = wait.until(ec.element_to_be_clickable((By.ID,'alterar_informacoes')))
         navegador.execute_script("arguments[0].scrollIntoView();", alterar)
         alterar.click()
         time.sleep(3)
 
         print('data emissao')
-        data_emis = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="id_data_emissao"]')))
+        data_emis = wait.until(ec.visibility_of_element_located((By.ID,'id_data_emissao')))
         data_emis.clear()
         data_emis.send_keys(pedido.data.strftime("%d/%m/%Y"))
         time.sleep(1)
