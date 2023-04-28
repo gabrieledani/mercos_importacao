@@ -103,8 +103,8 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         adc_pro = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="div_adicionar_produto"]/ul/li[1]')))
         #wait.until(ec.element_to_be_clickable(adc_pro))
         #time.sleep(1)
-        #adc_pro.click()
-        action.send_keys(Keys.ENTER).perform()
+        adc_pro.click()
+        #action.send_keys(Keys.ENTER).perform()
         time.sleep(1)
 
         print('quantidade')
@@ -142,8 +142,8 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         adc_pro = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="div_adicionar_produto"]/ul/li[1]')))
         #wait.until(ec.element_to_be_clickable(adc_pro))
         #time.sleep(1)
-        #adc_pro.click()
-        action.send_keys(Keys.ENTER).perform()
+        adc_pro.click()
+        #action.send_keys(Keys.ENTER).perform()
         time.sleep(1)
 
         print('quantidade')
@@ -180,8 +180,8 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         adc_pro = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="div_adicionar_produto"]/ul/li[1]')))
         #wait.until(ec.element_to_be_clickable(adc_pro))
         #time.sleep(1)
-        #adc_pro.click()
-        action.send_keys(Keys.ENTER).perform()
+        adc_pro.click()
+        #action.send_keys(Keys.ENTER).perform()
         time.sleep(1)
 
         print('quantidade')
@@ -309,8 +309,8 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         adc_pro = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="div_adicionar_produto"]/ul/li[1]')))
         #wait.until(ec.element_to_be_clickable(adc_pro))
         #time.sleep(1)
-        #adc_pro.click()
-        action.send_keys(Keys.ENTER).perform()
+        adc_pro.click()
+        #action.send_keys(Keys.ENTER).perform()
         time.sleep(1)
 
         print('quantidade')
