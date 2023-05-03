@@ -43,7 +43,7 @@ vlr_frete = 'CIF (Frete Pago)'
 vlr_cond = '28/42/56'
 vlr_repr = 'Hengst Indústria de Filtros Ltda'
 
-df_pedidos = pd.read_excel('banco_hengst_2015.xlsx')
+df_pedidos = pd.read_excel('banco_hengst_2016.xlsx')
 
 #tempooooooooo
 time.sleep(10)
@@ -94,11 +94,12 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         produto = navegador.find_element(By.ID,'produto_autocomplete')
         #wait.until_not( ec.element_attribute_to_include((By.ID,'produto_autocomplete'),'disabled'))
         #wait.until(ec.element_to_be_clickable((produto)))
-        while produto.get_property('disabled') == True:
+        while produto.get_property('disabled') == True or produto != navegador.switch_to.active_element:
             time.sleep(1)
         print(produto.is_enabled())
         print('habilitou produto')
         produto.send_keys(pedido.codigo)
+        time.sleep(2)
         #action.send_keys(pedido.codigo).perform()
         adc_pro = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="div_adicionar_produto"]/ul/li[1]')))
         #wait.until(ec.element_to_be_clickable(adc_pro))
@@ -137,7 +138,10 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         
         print('produto')
         produto = wait.until(ec.visibility_of_element_located((By.ID,'produto_autocomplete')))
+        while produto.get_property('disabled') == True or produto != navegador.switch_to.active_element:
+            time.sleep(1)
         produto.send_keys(pedido.codigo)
+        time.sleep(2)
         #action.send_keys(pedido.codigo).perform()
         adc_pro = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="div_adicionar_produto"]/ul/li[1]')))
         #wait.until(ec.element_to_be_clickable(adc_pro))
@@ -175,7 +179,10 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         
         print('produto')
         produto = wait.until(ec.visibility_of_element_located((By.ID,'produto_autocomplete')))
+        while produto.get_property('disabled') == True or produto != navegador.switch_to.active_element:
+            time.sleep(1)
         produto.send_keys(pedido.codigo)
+        time.sleep(2)
         #action.send_keys(pedido.codigo).perform()
         adc_pro = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="div_adicionar_produto"]/ul/li[1]')))
         #wait.until(ec.element_to_be_clickable(adc_pro))
@@ -300,11 +307,12 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         produto = navegador.find_element(By.ID,'produto_autocomplete')
         #wait.until_not( ec.element_attribute_to_include((By.ID,'produto_autocomplete'),'disabled'))
         #wait.until(ec.element_to_be_clickable((produto)))
-        while produto.get_property('disabled') == True:
+        while produto.get_property('disabled') == True or produto != navegador.switch_to.active_element:
             time.sleep(1)
         print(produto.is_enabled())
         print('habilitou produto')
         produto.send_keys(pedido.codigo)
+        time.sleep(2)
         #action.send_keys(pedido.codigo).perform()
         adc_pro = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="div_adicionar_produto"]/ul/li[1]')))
         #wait.until(ec.element_to_be_clickable(adc_pro))
