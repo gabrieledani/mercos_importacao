@@ -43,7 +43,7 @@ vlr_frete = 'CIF (Frete Pago)'
 vlr_cond = '28/42/56'
 vlr_repr = 'Hengst Indústria de Filtros Ltda'
 
-df_pedidos = pd.read_excel('banco_hengst_2016.xlsx')
+df_pedidos = pd.read_excel('banco_hengst_2016_.xlsx')
 
 #tempooooooooo
 time.sleep(10)
@@ -213,7 +213,7 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         print('salva produto')
         slv_pro =  wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="adicao_produto"]/form/div[3]/a[1]')))
         slv_pro.click()
-        time.sleep(1)
+        time.sleep(3)
         
         print('terminei produtos')
         terminei_prod = wait.until(ec.presence_of_element_located((By.ID,'botao_terminei_de_adicionar')))
