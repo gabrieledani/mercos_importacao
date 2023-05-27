@@ -10,10 +10,8 @@ from selenium.webdriver.common.action_chains import ActionChains
 import time
 import pandas as pd
 
-#opcoes = webdriver.FirefoxOptions()
+
 servico = FirefoxService(executable_path=GeckoDriverManager().install())
-#opcoes.add_experimental_option("excludeSwitches", ["enable-logging"])
-#opcoes.add_experimental_option("detach", True)
 navegador = webdriver.Firefox(service=servico)
 
 wait = WebDriverWait(navegador, 50)
@@ -25,37 +23,30 @@ navegador.get("https://app.mercos.com/")
 time.sleep(1)
 
 #autenticacao
-#usuario = wait.until(ec.visibility_of_element_located((By.ID,'id_usuario')))
 usuario = navegador.find_element(By.ID,'id_usuario')
 usuario.send_keys('gabrieledani@gmail.com')
 
-#senha = wait.until(ec.visibility_of_element_located((By.ID,'id_senha')))
 senha = navegador.find_element(By.ID,'id_senha')
 senha.send_keys('Vedafil2022')
 
-#lg = wait.until(ec.element_to_be_clickable((By.ID,"botaoEfetuarLogin")))
 lg = navegador.find_element(By.ID,"botaoEfetuarLogin")
-#navegador.execute_script("arguments[0].scrollIntoView();", lg)
-#navegador.execute_script("arguments[0].click();", lg)
 lg.click()
 
-vlr_frete = 'CIF (Frete Pago)'
-vlr_cond = '28/42/56'
-vlr_repr = 'Hengst Indústria de Filtros Ltda'
+#tempooooooooo
+time.sleep(5)
 
 df_pedidos = pd.read_excel('banco_hengst_2016_.xlsx')
-
-#tempooooooooo
-time.sleep(10)
 
 for pedido in df_pedidos.itertuples(name='pedidos',index=False):
     print('Pedido->',pedido)
     cnpj = str(pedido.CNPJ)
-    cnpj = cnpj.replace('.','')
-    cnpj = cnpj.replace('/','')
-    cnpj = cnpj.replace('-','')
+    cnpj = cnpj.zfill(14)
     
     if pedido.acao == 1:
+        vlr_frete = 'CIF (Frete Pago)'
+        vlr_cond = '28/42/56'
+        vlr_repr = 'Hengst Indústria de Filtros Ltda'
+
         print('primeiro produto do pedido de vários')
 
         print('aba pedidos')
@@ -72,28 +63,34 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         
         print('cliente')
         cliente = wait.until(ec.visibility_of_element_located((By.ID,'id_codigo_cliente')))
-        #action.send_keys(cnpj).perform()
         cliente.send_keys(cnpj)
         time.sleep(1)
         action.send_keys(Keys.ENTER).perform()
         time.sleep(1)
+        #print(cliente.text)
+        #time.sleep(5)
         cli_encontrado = wait.until(ec.visibility_of_element_located((By.ID,'selecionado_autocomplete_id_codigo_cliente')))
+        #time.sleep(1)
         print('cliente foi',cli_encontrado.is_displayed())
+        #action.send_keys(Keys.ENTER).perform()
+        time.sleep(1)
 
         print('representada')
         repre = wait.until(ec.visibility_of_element_located((By.ID,'id_codigo_representada')))
-        #action.send_keys(vlr_repr).perform()
         repre.send_keys(vlr_repr)
         time.sleep(1)
         action.send_keys(Keys.ENTER).perform()
         time.sleep(1)
+        #print(repre.text)
+        #time.sleep(5)
         repre_encontrada = wait.until(ec.visibility_of_element_located((By.ID,'selecionado_autocomplete_id_codigo_representada')))
+        #time.sleep(5)
         print('representada foi',repre_encontrada.is_displayed())
+        #action.send_keys(Keys.ENTER).perform()
+        time.sleep(1)
 
         print('produto')
         produto = navegador.find_element(By.ID,'produto_autocomplete')
-        #wait.until_not( ec.element_attribute_to_include((By.ID,'produto_autocomplete'),'disabled'))
-        #wait.until(ec.element_to_be_clickable((produto)))
         while produto.get_property('disabled') == True or produto != navegador.switch_to.active_element:
             time.sleep(1)
         print(produto.is_enabled())
@@ -269,6 +266,7 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         time.sleep(3)
     
     elif pedido.acao == 4:
+
         print('informa cliente e representada e primeiro produto')
 
         print('aba pedidos')
@@ -285,45 +283,40 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         
         print('cliente')
         cliente = wait.until(ec.visibility_of_element_located((By.ID,'id_codigo_cliente')))
-        #action.send_keys(cnpj).perform()
         cliente.send_keys(cnpj)
         time.sleep(1)
         action.send_keys(Keys.ENTER).perform()
         time.sleep(1)
         cli_encontrado = wait.until(ec.visibility_of_element_located((By.ID,'selecionado_autocomplete_id_codigo_cliente')))
         print('cliente foi',cli_encontrado.is_displayed())
+        action.send_keys(Keys.ENTER).perform()
+        time.sleep(1)
 
         print('representada')
         repre = wait.until(ec.visibility_of_element_located((By.ID,'id_codigo_representada')))
-        #action.send_keys(vlr_repr).perform()
         repre.send_keys(vlr_repr)
         time.sleep(1)
         action.send_keys(Keys.ENTER).perform()
         time.sleep(1)
         repre_encontrada = wait.until(ec.visibility_of_element_located((By.ID,'selecionado_autocomplete_id_codigo_representada')))
         print('representada foi',repre_encontrada.is_displayed())
+        action.send_keys(Keys.ENTER).perform()
+        time.sleep(1)
 
         print('produto')
         produto = navegador.find_element(By.ID,'produto_autocomplete')
-        #wait.until_not( ec.element_attribute_to_include((By.ID,'produto_autocomplete'),'disabled'))
-        #wait.until(ec.element_to_be_clickable((produto)))
         while produto.get_property('disabled') == True or produto != navegador.switch_to.active_element:
             time.sleep(1)
         print(produto.is_enabled())
         print('habilitou produto')
         produto.send_keys(pedido.codigo)
         time.sleep(2)
-        #action.send_keys(pedido.codigo).perform()
         adc_pro = wait.until(ec.visibility_of_element_located((By.XPATH,'//*[@id="div_adicionar_produto"]/ul/li[1]')))
-        #wait.until(ec.element_to_be_clickable(adc_pro))
-        #time.sleep(1)
         adc_pro.click()
-        #action.send_keys(Keys.ENTER).perform()
         time.sleep(1)
 
         print('quantidade')
         quantidade = wait.until(ec.visibility_of_element_located((By.ID,'id_quantidade')))
-        #quantidade = navegador.find_element(By.ID,'id_quantidade')
         quantidade.send_keys(pedido.quantidade)
         time.sleep(1)
 
