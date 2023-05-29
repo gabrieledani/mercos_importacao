@@ -32,6 +32,7 @@ senha.send_keys('Vedafil2022')
 lg = navegador.find_element(By.ID,"botaoEfetuarLogin")
 lg.click()
 
+
 #tempooooooooo
 time.sleep(5)
 
@@ -42,10 +43,11 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
     cnpj = str(pedido.CNPJ)
     cnpj = cnpj.zfill(14)
     
+    vlr_frete = 'CIF (Frete Pago)'
+    vlr_cond = '28/42/56'
+    vlr_repr = 'Hengst Indústria de Filtros Ltda'
+    
     if pedido.acao == 1:
-        vlr_frete = 'CIF (Frete Pago)'
-        vlr_cond = '28/42/56'
-        vlr_repr = 'Hengst Indústria de Filtros Ltda'
 
         print('primeiro produto do pedido de vários')
 
