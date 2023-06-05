@@ -31,21 +31,19 @@ senha.send_keys('Vedafil2022')
 
 lg = navegador.find_element(By.ID,"botaoEfetuarLogin")
 lg.click()
-
-
 #tempooooooooo
 time.sleep(5)
 
-df_pedidos = pd.read_excel('banco_hengst_2016_.xlsx')
+vlr_frete = 'CIF (Frete Pago)'
+vlr_cond = '28/42/56'
+vlr_repr = 'Hengst Indústria de Filtros Ltda'
+
+df_pedidos = pd.read_excel('banco_hengst_2017.xlsx')
 
 for pedido in df_pedidos.itertuples(name='pedidos',index=False):
     print('Pedido->',pedido)
-    cnpj = str(pedido.CNPJ)
-    cnpj = cnpj.zfill(14)
     
-    vlr_frete = 'CIF (Frete Pago)'
-    vlr_cond = '28/42/56'
-    vlr_repr = 'Hengst Indústria de Filtros Ltda'
+    cnpj = str(pedido.CNPJ).zfill(14)     
     
     if pedido.acao == 1:
 
@@ -218,9 +216,13 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         
         print('terminei produtos')
         navegador.find_element(By.TAG_NAME,'body').send_keys(Keys.END)
+        time.sleep(1)
         terminei_prod = wait.until(ec.presence_of_element_located((By.ID,'botao_terminei_de_adicionar')))
-        #navegador.execute_script("arguments[0].scrollIntoView();", terminei_prod)
+        time.sleep(1)
+        navegador.execute_script("arguments[0].scrollIntoView();", terminei_prod)
+        time.sleep(1)
         wait.until(ec.element_to_be_clickable(terminei_prod))
+        time.sleep(1)
         terminei_prod.click()
         time.sleep(3)
 
@@ -253,9 +255,10 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
 
         print('alterar pedido')
         navegador.find_element(By.TAG_NAME,'body').send_keys(Keys.END)
+        time.sleep(1)
         alterar = wait.until(ec.presence_of_element_located((By.ID,'alterar_informacoes')))
-        #time.sleep(1)
-        #navegador.execute_script("arguments[0].scrollIntoView();", alterar)
+        time.sleep(1)
+        navegador.execute_script("arguments[0].scrollIntoView();", alterar)
         time.sleep(1)
         wait.until(ec.element_to_be_clickable((By.ID,'alterar_informacoes')))
         time.sleep(1)
@@ -350,9 +353,13 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
         
         print('terminei produtos')
         navegador.find_element(By.TAG_NAME,'body').send_keys(Keys.END)
+        time.sleep(1)
         terminei_prod = wait.until(ec.presence_of_element_located((By.ID,'botao_terminei_de_adicionar')))
-        #navegador.execute_script("arguments[0].scrollIntoView();", terminei_prod)
+        time.sleep(1)
+        navegador.execute_script("arguments[0].scrollIntoView();", terminei_prod)
+        time.sleep(1)
         wait.until(ec.element_to_be_clickable(terminei_prod))
+        time.sleep(1)
         terminei_prod.click()
         time.sleep(3)
 
@@ -378,16 +385,18 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
 
         print('GERAR PEDIDO...')
         gera_pedido = wait.until(ec.presence_of_element_located((By.LINK_TEXT,'Transformar em pedido')))
-        #navegador.execute_script("arguments[0].scrollIntoView();", gera_pedido)
+        navegador.execute_script("arguments[0].scrollIntoView();", gera_pedido)
         wait.until(ec.element_to_be_clickable((By.LINK_TEXT,'Transformar em pedido')))
         gera_pedido.click()
         time.sleep(3)
 
         print('alterar pedido')
         navegador.find_element(By.TAG_NAME,'body').send_keys(Keys.END)
+        time.sleep(1)
         alterar = wait.until(ec.presence_of_element_located((By.ID,'alterar_informacoes')))
         time.sleep(1)
-        #navegador.execute_script("arguments[0].scrollIntoView();", alterar)
+        navegador.execute_script("arguments[0].scrollIntoView();", alterar)
+        time.sleep(1)
         wait.until(ec.element_to_be_clickable((By.ID,'alterar_informacoes')))
         time.sleep(1)
         alterar.click()
@@ -401,7 +410,6 @@ for pedido in df_pedidos.itertuples(name='pedidos',index=False):
 
         print('salva pedido')
         slv_pdv = wait.until(ec.element_to_be_clickable((By.XPATH,'//*[@id="simplest_modal"]/div[2]/form/div[2]/a[1]')))
-        #navegador.execute_script("arguments[0].scrollIntoView();", slv_pdv)
         slv_pdv.click()
         time.sleep(3)
 
