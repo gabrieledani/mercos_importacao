@@ -26,9 +26,9 @@ time.sleep(5)
 
 #autenticacao
 usuario = wait.until(ec.presence_of_element_located((By.ID,'id_usuario')))
-usuario.send_keys('gabrieledani@gmail.com')
+usuario.send_keys('contato.vedafil@gmail.com')
 senha = wait.until(ec.presence_of_element_located((By.ID,'id_senha')))
-senha.send_keys('Vedafil2022')
+senha.send_keys('VEDAFIL2021')
 
 lg = wait.until(ec.element_to_be_clickable((By.ID,"botaoEfetuarLogin")))
 lg.click()

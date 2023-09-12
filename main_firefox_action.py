@@ -24,7 +24,7 @@ time.sleep(1)
 
 #autenticacao
 usuario = navegador.find_element(By.ID,'id_usuario')
-usuario.send_keys('gabrieledani@gmail.com')
+usuario.send_keys('contato.vedafil@gmail.com')
 
 senha = navegador.find_element(By.ID,'id_senha')
 senha.send_keys('Vedafil2022')
